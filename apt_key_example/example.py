@@ -58,6 +58,9 @@ def apt_cache():
 
 	# Now redirect TrustedParts to our unpriv one
 	apt.apt_pkg.config.set("Dir::Etc::TrustedParts", unpriv_trusted_parts)
+	with open(os.path.join(root_dir, "etc", "apt", "apt.conf"), "w") as f:
+		f.write("Dir::Etc::TrustedParts {};\n".format(unpriv_trusted_parts))
+	os.environ["APT_CONFIG"] = os.path.join(root_dir, "etc", "apt", "apt.conf")
 
 	# Now add our own trusted part
 	shutil.copy2(os.path.join(sys.prefix, "share", "apt-key-example", "keyrings", "ros.gpg"), unpriv_trusted_parts)
