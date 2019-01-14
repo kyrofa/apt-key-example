@@ -1,0 +1,21 @@
+Install dependencies:
+
+    $ sudo apt install gcc g++ python3-venv python3-dev libapt-pkg-dev
+
+Create a new virtual environment:
+
+    $ mkdir ~/venv
+    $ python3 -m venv ~/venv
+    $ source ~/venv/bin/activate
+
+Update pip in the venv:
+
+    $ pip install -U pip
+
+Install the utility:
+
+    $ pip install -r requirements.txt .
+
+Run it:
+
+    $ apt-key-example
